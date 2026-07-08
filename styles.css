@@ -628,14 +628,15 @@ Only height changes the bottle size. Width stays auto.
   }
 }
 .site-footer {
-    padding: 40px 20px;
+    background: #0b0b0b;
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding: 28px 20px;
     text-align: center;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.45);
-    border-top: 1px solid rgba(255,255,255,0.08);
-    margin-top: 80px;
 }
 
 .site-footer p {
+    color: rgba(255,255,255,.45);
+    font-size: 13px;
+    letter-spacing: .03em;
     margin: 0;
 }
