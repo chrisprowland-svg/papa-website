@@ -1,3 +1,41 @@
+@font-face {
+  font-family: "Relative";
+  src: url("/fonts/relativetrial-book.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Relative";
+  src: url("/fonts/relativetrial-medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Relative";
+  src: url("/fonts/relativetrial-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Relative Mono";
+  src: url("/fonts/relativetrial-mono10pitch.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =========================================================
+   PA PA Website v1.1
+   Font update only: Relative / Relative Mono.
+   Existing layout, crops, mobile fixes, bottle fixes and footer retained.
+   ========================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +56,7 @@ body {
   margin: 0;
   background: var(--offwhite);
   color: var(--black);
-  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-family: "Relative", "Helvetica Neue", Arial, sans-serif;
   line-height: 1.25;
 }
 
@@ -53,6 +91,7 @@ a {
 }
 
 .site-nav-links {
+  font-family: "Relative Mono", monospace;
   display: flex;
   gap: clamp(18px, 3vw, 42px);
   font-size: 13px;
@@ -62,6 +101,7 @@ a {
 }
 
 .menu-button {
+  font-family: "Relative Mono", monospace;
   display: none;
   border: 0;
   background: transparent;
@@ -158,7 +198,7 @@ Coming soon image crop.
   font-size: clamp(58px, 7.4vw, 124px);
   line-height: 0.98;
   letter-spacing: -0.055em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .hero p {
@@ -185,7 +225,7 @@ Coming soon image crop.
   font-size: clamp(48px, 7vw, 118px);
   line-height: 1.02;
   letter-spacing: -0.06em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .about-section p {
@@ -228,7 +268,7 @@ Coming soon image crop.
   font-size: clamp(42px, 6.2vw, 96px);
   line-height: 0.98;
   letter-spacing: -0.055em;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .wine-section p {
@@ -290,9 +330,10 @@ Only height changes the bottle size. Width stays auto.
 }
 
 .kicker {
+  font-family: "Relative Mono", monospace;
   margin: 0 0 18px;
   font-size: 13px !important;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
 }
@@ -394,7 +435,7 @@ Only height changes the bottle size. Width stays auto.
 }
 
 .contact-detail {
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .footer {
@@ -635,8 +676,36 @@ Only height changes the bottle size. Width stays auto.
 }
 
 .site-footer p {
+    font-family: "Relative", "Helvetica Neue", Arial, sans-serif;
     color: rgba(255,255,255,.45);
     font-size: 13px;
     letter-spacing: .03em;
     margin: 0;
 }
+
+
+/* =========================================================
+   TYPOGRAPHY REFINEMENT
+   Relative for main copy/headings.
+   Relative Mono for small supporting UI labels.
+   ========================================================= */
+
+h1,
+h2,
+h3,
+.hero h1,
+.about-section h2,
+.wine-section h2,
+.quote-section h2,
+.principles-intro h2,
+.coming-section h2,
+.contact-section h2 {
+  font-family: "Relative", "Helvetica Neue", Arial, sans-serif;
+}
+
+.site-nav-links,
+.menu-button,
+.kicker {
+  font-family: "Relative Mono", monospace;
+}
+
