@@ -627,3 +627,15 @@ Only height changes the bottle size. Width stays auto.
     max-width: 88vw;
   }
 }
+.site-footer {
+    padding: 40px 20px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.45);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 80px;
+}
+
+.site-footer p {
+    margin: 0;
+}
