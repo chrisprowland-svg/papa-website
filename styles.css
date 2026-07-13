@@ -124,8 +124,10 @@ Hero paper bag image:
 */
 .hero {
   background-image: url("assets/hero-paperbag.jpg");
-  background-size: cover;
-  background-position: 50% 50%;
+  background-size: auto 100%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #0c0c0c;
 }
 
 /*
@@ -141,7 +143,10 @@ object-position: center top;
 }
 
 .photo-cheese img {
-  object-position: 50% 50%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
 }
 
 /*
