@@ -31,9 +31,10 @@
 }
 
 /* =========================================================
-   PA PA Website v1.1
-   Font update only: Relative / Relative Mono.
-   Existing layout, crops, mobile fixes, bottle fixes and footer retained.
+   PA PA Website v1.2
+   Full-width layout restored.
+   Desktop 1920x1080 imagery with original mobile imagery.
+   Duplicate responsive overrides consolidated.
    ========================================================= */
 
 * {
@@ -50,12 +51,10 @@
 
 html {
   scroll-behavior: smooth;
-  background: #0c0c0c;
 }
 
 body {
-  margin: 0 auto;
-  max-width: 1440px;
+  margin: 0;
   background: var(--offwhite);
   color: var(--black);
   font-family: "Relative", "Helvetica Neue", Arial, sans-serif;
@@ -118,17 +117,7 @@ a {
    These are the main values to tweak in Notepad++.
    ========================================================= */
 
-/*
-Hero paper bag image:
-- background-size: 100% auto;  = zoomed out but may show empty space on some screens
-- background-size: cover;      = fills screen but crops image
-- background-position: 50% 50%; = centre. First number moves left/right, second moves up/down.
-*/
-.hero {
-  background-image: url("assets/hero-paperbag.jpg");
-  background-size: cover;
-  background-position: 50% 50%;
-}
+/* Hero image controls */
 
 /*
 Lifestyle photo crops:
@@ -143,6 +132,7 @@ object-position: center top;
 }
 
 .photo-cheese img {
+  content: url("assets/cheese-gris-1920.jpg");
   object-position: 50% 50%;
 }
 
@@ -174,6 +164,9 @@ Coming soon image crop.
   color: var(--white);
   overflow: hidden;
   padding: clamp(28px, 5vw, 78px);
+  background-image: url("assets/hero-paperbag-1920.jpg");
+  background-size: cover;
+  background-position: 50% 50%;
   background-repeat: no-repeat;
 }
 
@@ -199,7 +192,6 @@ Coming soon image crop.
   margin: 0;
   font-size: clamp(58px, 7.4vw, 124px);
   line-height: 0.98;
-  letter-spacing: -0.015em;
   font-weight: 700;
 }
 
@@ -226,7 +218,6 @@ Coming soon image crop.
   margin: 0 0 28px;
   font-size: clamp(48px, 7vw, 118px);
   line-height: 1.02;
-  letter-spacing: -0.06em;
   font-weight: 700;
 }
 
@@ -269,7 +260,6 @@ Coming soon image crop.
   margin: 0 0 38px;
   font-size: clamp(42px, 6.2vw, 96px);
   line-height: 0.98;
-  letter-spacing: -0.055em;
   font-weight: 700;
 }
 
@@ -318,7 +308,6 @@ Only height changes the bottle size. Width stays auto.
   margin: 0 auto;
   font-size: clamp(36px, 5.6vw, 88px);
   line-height: 1.08;
-  letter-spacing: -0.055em;
 }
 
 /* =========================================================
@@ -345,7 +334,6 @@ Only height changes the bottle size. Width stays auto.
   max-width: 1120px;
   font-size: clamp(40px, 6.8vw, 108px);
   line-height: .98;
-  letter-spacing: -0.06em;
 }
 
 .principles-grid {
@@ -373,7 +361,6 @@ Only height changes the bottle size. Width stays auto.
 .principles-grid h3 {
   font-size: clamp(24px, 2.6vw, 42px);
   line-height: .98;
-  letter-spacing: -.04em;
   margin: 48px 0 16px;
 }
 
@@ -406,7 +393,6 @@ Only height changes the bottle size. Width stays auto.
   margin: 0 0 24px;
   font-size: clamp(42px, 6.2vw, 96px);
   line-height: 1;
-  letter-spacing: -0.055em;
 }
 
 .coming-section p {
@@ -428,7 +414,6 @@ Only height changes the bottle size. Width stays auto.
   margin: 0 0 24px;
   font-size: clamp(40px, 6vw, 96px);
   line-height: .98;
-  letter-spacing: -0.055em;
 }
 
 .contact-section p {
@@ -454,6 +439,11 @@ Only height changes the bottle size. Width stays auto.
 .footer p {
   color: rgba(255,255,255,.70);
   margin: 0 0 10px;
+}
+
+.wine-copy {
+  min-width: 0;
+  max-width: 100%;
 }
 
 /* =========================================================
@@ -485,6 +475,7 @@ Only height changes the bottle size. Width stays auto.
 
   .hero {
     min-height: 82svh;
+    background-image: url("assets/hero-paperbag.jpg");
     background-position: 43% 50%;
   }
 
@@ -498,16 +489,44 @@ Only height changes the bottle size. Width stays auto.
     grid-template-columns: 1fr;
   }
 
+  .wine-section {
+    --bottle-height: 640px;
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
   .wine-gris .wine-bottle {
     order: 2;
   }
 
-  .wine-section {
-    --bottle-height: 640px;
+  .wine-copy {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .wine-copy p,
+  .wine-copy h2 {
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .wine-bottle {
+    width: 100%;
     min-height: 620px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+
+  .wine-bottle img {
+    height: min(68vh, 620px);
+    width: auto;
+    max-width: 86vw;
+    object-fit: contain;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .principles-grid {
@@ -523,6 +542,7 @@ Only height changes the bottle size. Width stays auto.
   .hero {
     min-height: 760px;
     padding-top: 84px;
+    background-image: url("assets/hero-paperbag.jpg");
     background-position: 44% 50%;
   }
 
@@ -534,124 +554,17 @@ Only height changes the bottle size. Width stays auto.
     height: 420px;
   }
 
+  .photo-cheese img {
+    content: url("assets/cheese-gris.jpg");
+  }
+
   .wine-section {
     min-height: auto;
     --bottle-height: 520px;
-  }
-
-  .wine-bottle {
-    min-height: 520px;
-  }
-
-  .coming-section img {
-    aspect-ratio: 1 / 1;
-  }
-}
-
-
-/* =========================================================
-   MOBILE PRODUCT FIXES
-   Prevent wine copy running off-screen and centre bottles.
-   ========================================================= */
-
-.wine-copy {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.wine-copy p,
-.wine-copy h2 {
-  overflow-wrap: anywhere;
-}
-
-@media (max-width: 920px) {
-  .wine-section {
-    overflow: hidden;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
-
-  .wine-copy {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .wine-copy p,
-  .wine-copy h2 {
-    max-width: 100%;
-  }
-
-  .wine-bottle {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: visible;
-  }
-
-  .wine-bottle img {
-    height: min(68vh, var(--bottle-height));
-    width: auto;
-    max-width: 86vw;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (max-width: 560px) {
-  .wine-section {
     padding-left: 22px;
     padding-right: 22px;
   }
 
-  .wine-section h2 {
-    font-size: clamp(38px, 13vw, 64px);
-  }
-
-  .wine-section p {
-    font-size: 18px;
-    line-height: 1.32;
-  }
-
-  .wine-bottle {
-    min-height: 480px;
-  }
-
-  .wine-bottle img {
-    height: min(58vh, var(--bottle-height));
-    max-width: 82vw;
-  }
-}
-
-
-/* =========================================================
-   CROPPED BOTTLE ASSET FIX
-   Product PNGs are now tightly cropped, so CSS height works properly.
-   ========================================================= */
-
-@media (max-width: 920px) {
-  .wine-section {
-    overflow: hidden;
-  }
-
-  .wine-bottle {
-    min-height: 620px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .wine-bottle img {
-    height: min(68vh, 620px);
-    width: auto;
-    max-width: 86vw;
-    object-fit: contain;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-@media (max-width: 560px) {
   .wine-section h2 {
     font-size: clamp(38px, 13vw, 64px);
   }
@@ -669,12 +582,10 @@ Only height changes the bottle size. Width stays auto.
     height: min(62vh, 560px);
     max-width: 88vw;
   }
-}
-.site-footer {
-    background: #0b0b0b;
-    border-top: 1px solid rgba(255,255,255,.08);
-    padding: 28px 20px;
-    text-align: center;
+
+  .coming-section img {
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .site-footer p {
