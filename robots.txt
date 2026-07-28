@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://papawine.com.au/sitemap.xml
