@@ -20,7 +20,11 @@ if (toggle && links) {
 (() => {
   let ageConfirmed = false;
   try {
-    ageConfirmed = window.localStorage.getItem("papa-age-confirmed") === "true";
+    const stored = window.localStorage.getItem("papa-age-confirmed");
+    const confirmedAt = Number(stored);
+    const thirtyDaysMs = 30 * 24 * 60 * 60 * 1000;
+    ageConfirmed = Number.isFinite(confirmedAt) && confirmedAt > 0 &&
+      Date.now() >= confirmedAt && Date.now() - confirmedAt < thirtyDaysMs;
   } catch (_) {
     // If storage is unavailable, ask again on each page visit.
   }
@@ -49,7 +53,7 @@ if (toggle && links) {
   const [confirmButton, declineButton] = dialog.querySelectorAll("button");
   confirmButton.addEventListener("click", () => {
     try {
-      window.localStorage.setItem("papa-age-confirmed", "true");
+      window.localStorage.setItem("papa-age-confirmed", String(Date.now()));
     } catch (_) {
       // The visitor can still continue for this page view.
     }
